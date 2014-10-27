@@ -45,7 +45,7 @@
 
                 for(var i=0; i < clickX.length; i++) {		
                     ctx.beginPath();
-                    if(clickDrag[i] && i){
+                    if(clickDrag[i]){
                         ctx.moveTo(clickX[i-1], clickY[i-1]);
                     }else{
                         ctx.moveTo(clickX[i]-1, clickY[i]);
