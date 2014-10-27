@@ -76,12 +76,14 @@
                 paint = true;
                 addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
                 redraw();
+                emitDraw();
             });
 
             $('#draw').mousemove(function(e){
                 if(paint){
                     addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
                     redraw();
+                    emitDraw();
                 }
             });
 
