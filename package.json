@@ -1,0 +1,7 @@
+{
+  "name": "darwing",
+  "description": "A simple collaborative drawing application",
+  "dependencies": {
+    "grunt-serve": "^0.1.6"
+  }
+}
