@@ -18,6 +18,9 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         $(function() {
+            //socket
+            var socket = io();
+            
             //canvas
             var canvas = document.getElementById('draw');
             var ctx = canvas.getContext('2d');
@@ -91,9 +94,6 @@
                 emitDraw();
                 paint = false;
             });
-            
-            //socket
-            var socket = io();
 
             socket.on("draw", function(params) {
                 clickX = params.clickX;
