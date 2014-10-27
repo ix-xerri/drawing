@@ -10,6 +10,9 @@
     <body>
         <canvas id="draw" width="600px" height="480px"></canvas>
         <h1>Participants</h1>
+        <pre class="users">
+        
+        </pre>
     </body>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -101,6 +104,10 @@
             });
             
             socket.on("users", function(users) {
+                var txtUsers = JSON.stringify(users, null, 4);
+                
+                $('.users').text(txtUsers);
+                
                 console.log(users);
             });
         });
