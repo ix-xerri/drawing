@@ -17,10 +17,13 @@
             //canvas
             var canvas = document.getElementById('draw');
             var ctx = canvas.getContext('2d');
-
-            var clickX = new Array();
-            var clickY = new Array();
-            var clickDrag = new Array();
+            
+            //drawing - data is always received from node.
+            var clickX;
+            var clickY;
+            var clickDrag;
+            
+            //boolean paint
             var paint;
 
             function addClick(x, y, dragging){
