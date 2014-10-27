@@ -1,7 +1,8 @@
 {
-  "name": "darwing",
+  "name": "drawing",
   "description": "A simple collaborative drawing application",
   "dependencies": {
-    "grunt-serve": "^0.1.6"
+    "express": "^4.10.0",
+    "socket.io": "^1.1.0"
   }
 }
