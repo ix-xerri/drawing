@@ -14,9 +14,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         $(function() {
-            //socket
-            var socket = io();
-
             //canvas
             var canvas = document.getElementById('draw');
             var ctx = canvas.getContext('2d');
@@ -51,6 +48,16 @@
                     ctx.stroke();
                 }
             }
+            
+            function emitDraw(){
+                var params = {
+                    clickX: clickX,
+                    clickY: clickY,
+                    clickDrag: clickDrag
+                }
+                
+                socket.emit("draw", params);
+            }
 
             $('#draw').mousedown(function(e){
                 var mouseX = e.pageX - this.offsetLeft;
@@ -69,11 +76,24 @@
             });
 
             $('#draw').mouseup(function(e){
+                emitDraw();                
                 paint = false;
             });
 
             $('#draw').mouseleave(function(e){
+                emitDraw();
                 paint = false;
+            });
+            
+            //socket
+            var socket = io();
+
+            socket.on("draw", function(params) {
+                clickX = params.clickX;
+                clickY = params.clickY;
+                clickDrag = params.clickDrag;
+                
+                redraw();
             });
         });
     </script>

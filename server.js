@@ -9,3 +9,9 @@ app.use(express.static(__dirname + '/public'));
 http.listen(app.get('port'), function() {
     console.log('open localhost:'+app.get('port'));
 });
+
+io.on('connection', function(socket){
+    socket.on('draw', function(params) {
+        io.emit('draw',params);
+    });
+});
