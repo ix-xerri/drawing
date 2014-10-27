@@ -9,6 +9,7 @@
     </head>
     <body>
         <canvas id="draw" width="600px" height="480px"></canvas>
+        <h1>Participants</h1>
     </body>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -18,7 +19,7 @@
             var canvas = document.getElementById('draw');
             var ctx = canvas.getContext('2d');
             
-            //drawing - data is always received from node.
+            //drawing - data is always received from node
             var clickX;
             var clickY;
             var clickDrag;
@@ -97,6 +98,10 @@
                 clickDrag = params.clickDrag;
                 
                 redraw();
+            });
+            
+            socket.on("users", function(users) {
+                console.log(users);
             });
         });
     </script>
