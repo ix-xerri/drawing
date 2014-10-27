@@ -12,6 +12,14 @@ var drawing = {
 
 var users = {}
 
+var resetDrawing = function(){
+    drawing = {
+        clickX: [],
+        clickY: [],
+        clickDrag: []
+    }
+}
+
 app.set('port', (process.env.PORT || 8080));
 app.use(express.static(__dirname + '/public'));
 
@@ -50,6 +58,11 @@ io.on('connection', function(socket){
         console.log(socket.id + ' disconnected');
         //delete from the user store
         delete users[socket.id];
+                
+        //if everyone left the drawing reset it
+        if(Object.keys(users).length === 0){
+            resetDrawing();
+        }
         
         //send new user list
         io.emit('users', users);
